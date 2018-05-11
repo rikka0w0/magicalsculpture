@@ -1,0 +1,9 @@
+﻿# Creative Tab
+itemGroup.magicalsculpture=魔法雕像
+
+# Blocks
+tile.magicalsculpture:magicalsculpture.base.name=雕像底座
+tile.magicalsculpture:magicalsculpture.stone.name=雕像石
+
+# Items
+item.magicalsculpture:magicalsculptureitems.chisel.name=雕像凿

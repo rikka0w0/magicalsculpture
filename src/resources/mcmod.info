@@ -1,0 +1,20 @@
+[
+  {
+    "modid": "magicalsculpture",
+    "name": "Magical Sculptures",
+    "description": "Magical Sculptures!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/rikka0w0/magicalsculpture",
+    "updateUrl": "",
+    "authorList": [
+      "Rikka0_0",
+      "Yuriscat"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
+
