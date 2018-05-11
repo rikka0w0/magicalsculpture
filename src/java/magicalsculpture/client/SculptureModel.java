@@ -30,16 +30,15 @@ public class SculptureModel implements IModel, IBakedModel {
     private final Set<ResourceLocation> textures = Sets.newHashSet();
     private final IModel model;
     private final IModelState defaultState;
-    private final int facing;
     private final ResourceLocation particleTexture;
 
-    public SculptureModel(int facing) throws Exception {
+    public SculptureModel() throws Exception {
         String modelName = "magicalsculpture:sculpture.obj";    //Sketch Up --*.dae--> Blender --> *.obj & *.mtl
         ImmutableList.Builder<Pair<IModel, IModelState>> builder = ImmutableList.builder();
         List<Variant> variants = new LinkedList<Variant>();
         boolean uvLock = false;
 
-        Variant variant = new Variant(new ResourceLocation(modelName), rotationMatrix[facing], uvLock, 1);
+        Variant variant = new Variant(new ResourceLocation(modelName), ModelRotation.X0_Y0, uvLock, 1);
 
         ResourceLocation loc = variant.getModelLocation();
         if (!dependencies.contains(loc))
@@ -58,7 +57,6 @@ public class SculptureModel implements IModel, IBakedModel {
 
         defaultState = new MultiModelState(builder.build());
 
-        this.facing = facing;
         particleTexture = new ResourceLocation("magicalsculpture:blocks/stone");
         textures.add(particleTexture);
     }
@@ -81,17 +79,19 @@ public class SculptureModel implements IModel, IBakedModel {
     @Override
     public IBakedModel bake(IModelState state, VertexFormat format,
                             Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
-        ModelRotation rotationState = rotationMatrix[this.facing];
-        IModelState transformation = rotationState;
-        //Bake the Obj Model
-        IBakedModel bakedModel = this.model.bake(transformation, format, bakedTextureGetter);
+        for (int facing=0; facing<4; facing++) {
+            ModelRotation rotationState = rotationMatrix[facing];
+            IModelState transformation = rotationState;
+            //Bake the Obj Model
+            IBakedModel bakedModel = this.model.bake(transformation, format, bakedTextureGetter);
 
-        List<BakedQuad> quads = new ArrayList();
-        quads.addAll(bakedModel.getQuads(null, null, 0));
+            List<BakedQuad> quads = new ArrayList();
+            quads.addAll(bakedModel.getQuads(null, null, 0));
 
-        int rotation = rotationAngle[facing];
+            int rotation = rotationAngle[facing];
 
-        FastTESRSculpture.bakedModelUnmirrored[facing] = quads;
+            FastTESRSculpture.bakedModelUnmirrored[facing] = quads;
+        }
 
         this.particle = bakedTextureGetter.apply(particleTexture);
         return this;

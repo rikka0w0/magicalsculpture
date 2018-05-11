@@ -3,7 +3,6 @@ package magicalsculpture.block;
 import magicalsculpture.CreativeTab;
 import magicalsculpture.GuiHandler;
 import magicalsculpture.ItemRegistry;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -105,7 +104,7 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
     ///////////////////////////////
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, EnumSculptureBlockType.property, BlockHorizontal.FACING);
+        return new BlockStateContainer(this, EnumSculptureBlockType.property);
     }
 
     @Override
@@ -133,16 +132,16 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
 
     @Override
     public IBlockState getActualState(@Nonnull IBlockState state, IBlockAccess world, BlockPos pos) {
-        TileEntity te = world.getTileEntity(pos);
-        if (te instanceof TileEntitySculpture) {
-            TileEntitySculpture render = (TileEntitySculpture) te;
-            EnumFacing facing = render.getFacing();
-            if (facing == null) {
-                return state; //Prevent crashing!
-            }
-
-            state = state.withProperty(BlockHorizontal.FACING, facing);
-        }
+//        TileEntity te = world.getTileEntity(pos);
+//        if (te instanceof TileEntitySculpture) {
+//            TileEntitySculpture render = (TileEntitySculpture) te;
+//            EnumFacing facing = render.getFacing();
+//            if (facing == null) {
+//                return state; //Prevent crashing!
+//            }
+//
+//            state = state.withProperty(BlockHorizontal.FACING, facing);
+//        }
         return state;
     }
 
@@ -164,7 +163,17 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
                 if (ret != null) {
                     EnumFacing playerSight = Utils.getPlayerSightHorizontal(player);
                     ret.createStructure();
-                    return true;
+
+                    TileEntity te = world.getTileEntity(pos);
+                    if (te instanceof TileEntitySculpture) {
+                        BlockPos renderPos = ((TileEntitySculpture)te).getRenderPos();
+                       te =  world.getTileEntity(renderPos);
+                       if (te instanceof TileEntitySculpture.Render) {
+                           ((TileEntitySculpture.Render)te).setRenderFacing(playerSight);
+                       }
+                    }
+
+                    return false;
                 }
             } else {
                 return false;

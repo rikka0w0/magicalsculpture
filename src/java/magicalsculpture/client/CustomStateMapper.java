@@ -3,12 +3,10 @@ package magicalsculpture.client;
 import magicalsculpture.block.BlockSculpture;
 import magicalsculpture.block.EnumSculptureBlockType;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -43,10 +41,9 @@ public class CustomStateMapper extends StateMapperBase implements IModelLoader {
         String varStr = "";
         
         if (block instanceof BlockSculpture) {
-        	EnumFacing rotation = state.getValue(BlockHorizontal.FACING);
             EnumSculptureBlockType blockType = state.getValue(EnumSculptureBlockType.property);
 
-        	varStr = rotation.name() + "," + String.valueOf(blockType.index);
+        	varStr = String.valueOf(blockType.index);
         }
         
         ModelResourceLocation res = new ModelResourceLocation(domain + ":" + VPATH,
@@ -62,8 +59,7 @@ public class CustomStateMapper extends StateMapperBase implements IModelLoader {
         Block block = Block.getBlockFromName(blockDomain + ":" + blockName);
 
         if (block instanceof BlockSculpture) {
-            EnumFacing rotation = EnumFacing.byName(splited[2]);
-            EnumSculptureBlockType blockType = EnumSculptureBlockType.fromInt(Integer.parseInt(splited[3]));
+            EnumSculptureBlockType blockType = EnumSculptureBlockType.fromInt(Integer.parseInt(splited[2]));
 
             switch (blockType) {
                 case Base:
@@ -71,7 +67,7 @@ public class CustomStateMapper extends StateMapperBase implements IModelLoader {
                 case Stone:
                     return new SingleTextureModel(blockDomain, "stone", true);
                 case Render:
-                    return new SculptureModel(rotation.ordinal()-2);
+                    return new SculptureModel();
                 default:
                     return new GhostModel("blocks/stone");
             }

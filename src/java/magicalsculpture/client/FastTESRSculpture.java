@@ -25,7 +25,7 @@ public class FastTESRSculpture extends FastTESR<TileEntitySculpture.Render> {
         BlockPos pos = te.getPos();
         buffer.setTranslation(x-pos.getX(), y-pos.getY(), z-pos.getZ());
 
-        int facing = te.getFacingInt();
+        int facing = te.getRenderFacing().ordinal() - 2;
         boolean mirrored = te.isMirrored();
         List<BakedQuad> quads = bakedModelUnmirrored[facing];
 
