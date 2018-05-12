@@ -17,6 +17,8 @@ public class ContainerAmplifier extends ContainerInventory implements IContainer
 
         addSlotToContainer(new Amplifier(inventoryTile, 0, 96, 22));
         addSlotToContainer(new Amplifier(inventoryTile, 1, 132, 22));
+        addSlotToContainer(new Amplifier(inventoryTile, 2, 96, 42));
+        addSlotToContainer(new Amplifier(inventoryTile, 3, 132, 42));
     }
 
     public static class Amplifier extends Slot {

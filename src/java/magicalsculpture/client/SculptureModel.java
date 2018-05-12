@@ -14,7 +14,9 @@ import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.MultiModelState;
 import net.minecraftforge.common.model.IModelState;
+import net.minecraftforge.common.model.TRSRTransformation;
 import org.apache.commons.lang3.tuple.Pair;
+import javax.vecmath.Matrix4f;
 
 import java.util.*;
 
@@ -81,7 +83,15 @@ public class SculptureModel implements IModel, IBakedModel {
                             Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
         for (int facing=0; facing<4; facing++) {
             ModelRotation rotationState = rotationMatrix[facing];
-            IModelState transformation = rotationState;
+
+            Matrix4f offsetMatrix1 = new Matrix4f();
+            offsetMatrix1.setIdentity();
+            offsetMatrix1.m03 = -0.5F;  // 1 -> 0.5
+            offsetMatrix1.m23 = -0.5F;  // 1 -> 0.5
+            Matrix4f ret = new Matrix4f();
+            ret.mul(rotationState.getMatrix(), offsetMatrix1);
+
+            IModelState transformation = new TRSRTransformation(ret);
             //Bake the Obj Model
             IBakedModel bakedModel = this.model.bake(transformation, format, bakedTextureGetter);
 

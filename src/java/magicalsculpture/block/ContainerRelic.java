@@ -16,7 +16,6 @@ public class ContainerRelic extends ContainerInventory implements IContainerWith
         super(invPlayer, inventoryTile);
 
         addSlotToContainer(new Relic(inventoryTile, 0, 96, 22));
-        addSlotToContainer(new Relic(inventoryTile, 1, 132, 22));
     }
 
 

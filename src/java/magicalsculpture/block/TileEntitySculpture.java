@@ -5,8 +5,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -51,15 +49,15 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
     }
 
     public static class Render extends TileEntitySculpture implements ITickable{
-        private EnumFacing facing;
+        private EnumFacing renderfacing;
 
         public void setRenderFacing(EnumFacing facing) {
-            this.facing = facing;
+            this.renderfacing = facing;
             markForRenderUpdate();
         }
 
         public EnumFacing getRenderFacing() {
-            return facing;
+            return renderfacing;
         }
 
         /////////////////////////////////////////////////////////
@@ -68,27 +66,27 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
         @Override
         public void prepareS2CPacketData(NBTTagCompound nbt) {
             super.prepareS2CPacketData(nbt);
-            Utils.saveToNbt(nbt, "facing", this.facing);
+            Utils.saveToNbt(nbt, "renderfacing", this.renderfacing);
         }
 
         @Override
         @SideOnly(Side.CLIENT)
         public void onSyncDataFromServerArrived(NBTTagCompound nbt) {
             super.onSyncDataFromServerArrived(nbt);
-            this.facing = Utils.facingFromNbt(nbt, "facing");
+            this.renderfacing = Utils.facingFromNbt(nbt, "renderfacing");
             markForRenderUpdate();
         }
 
         //////////////////////////////
         /////TileEntity
         //////////////////////////////
-        public final StandardInventory inventoryAmplifier = new StandardInventory(this, 2, "container.sculpture.amplifier.name");
-        public final StandardInventory inventoryRelic = new StandardInventory(this, 2, "container.sculpture.relic.name");
+        public final StandardInventory inventoryAmplifier = new StandardInventory(this, 4, "container.sculpture.amplifier.name");
+        public final StandardInventory inventoryRelic = new StandardInventory(this, 1, "container.sculpture.relic.name");
 
         @Override
         public void readFromNBT(NBTTagCompound nbt) {
             super.readFromNBT(nbt);
-            this.facing = Utils.facingFromNbt(nbt, "facing");
+            this.renderfacing = Utils.facingFromNbt(nbt, "renderfacing");
 
             NBTTagCompound amplifier = nbt.getCompoundTag("amplifier");
             if (amplifier != null)
@@ -100,7 +98,7 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
 
         @Override
         public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-            Utils.saveToNbt(nbt, "facing", this.facing);
+            Utils.saveToNbt(nbt, "renderfacing", this.renderfacing);
 
             NBTTagCompound amplifier = new NBTTagCompound();
             inventoryAmplifier.writeToNBT(amplifier);

@@ -59,7 +59,9 @@ public class ItemChisel extends ItemBase implements ISimpleTexture {
                             BlockPos renderPos = ((TileEntitySculpture)te).getRenderPos();
                             te =  world.getTileEntity(renderPos);
                             if (te instanceof TileEntitySculpture.Render) {
-                                ((TileEntitySculpture.Render)te).setRenderFacing(playerSight);
+//                                EnumFacing orientation = ((TileEntitySculpture.Render)te).getFacing();
+//                                if (orientation == playerSight | orientation == playerSight.getOpposite())
+                                    ((TileEntitySculpture.Render)te).setRenderFacing(playerSight);
                             }
                         }
                     }
