@@ -70,6 +70,7 @@ public class MagicalSculpture {
 
         proxy.init();
         Recipes.registerRecipes();
+        LootTables.registerLootTables();
 
         //Register GUI handler
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());

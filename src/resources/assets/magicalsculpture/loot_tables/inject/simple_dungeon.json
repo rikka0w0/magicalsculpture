@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "name": "magicalsculpture_dungeon",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "magicalsculpture:chisel",
+          "weight": 50
+        },
+        {
+          "type": "item",
+          "name": "minecraft:diamond",
+          "weight": 50
+        }
+      ]
+    }
+  ]
+}
