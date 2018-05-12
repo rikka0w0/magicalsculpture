@@ -35,6 +35,8 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
         super("magicalsculpture", Material.ROCK, ItemBlockBase.class);
         this.structureTemplate = this.createStructureTemplate();
         setCreativeTab(CreativeTab.instance);
+        setHardness(3.0F);
+        setResistance(5.0F);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
 
     private MultiBlockStructure createStructureTemplate() {
         //y,z,x facing NORTH(Z-), do not change
-        BlockMapping[][][] configuration = new BlockMapping[3][][];
+        BlockMapping[][][] configuration = new BlockMapping[5][][];
 
         BlockMapping base2base = new BlockMapping(stateFromType(EnumSculptureBlockType.Base), stateFromType(EnumSculptureBlockType.FormedBase));
         BlockMapping base2render = new BlockMapping(stateFromType(EnumSculptureBlockType.Base), stateFromType(EnumSculptureBlockType.Render));
@@ -66,6 +68,16 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
         };
 
         configuration[2] = new BlockMapping[][]{
+                {stone2stone, stone2stone},
+                {stone2stone, stone2stone}
+        };
+
+        configuration[3] = new BlockMapping[][]{
+                {stone2stone, stone2stone},
+                {stone2stone, stone2stone}
+        };
+
+        configuration[4] = new BlockMapping[][]{
                 {stone2stone, stone2stone},
                 {stone2stone, stone2stone}
         };
@@ -166,7 +178,7 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
 
                     TileEntity te = world.getTileEntity(pos);
                     if (te instanceof TileEntitySculpture) {
-                        BlockPos renderPos = ((TileEntitySculpture)te).getRenderPos();
+                       BlockPos renderPos = ((TileEntitySculpture)te).getRenderPos();
                        te =  world.getTileEntity(renderPos);
                        if (te instanceof TileEntitySculpture.Render) {
                            ((TileEntitySculpture.Render)te).setRenderFacing(playerSight);
@@ -183,10 +195,10 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
         //When openGui() is call on the server side, Forge seems automatically send a packet to client side
         //in order to notify the client to set up the container and show the Gui.
         if (!world.isRemote) {
-            if (blockType == EnumSculptureBlockType.FormedBase || blockType == EnumSculptureBlockType.Render)
-                GuiHandler.openGui(player, world, pos, GuiHandler.GuiType.AmplifierGUI);
-            else if (blockType == EnumSculptureBlockType.FormedStone)
-                GuiHandler.openGui(player, world, pos, GuiHandler.GuiType.RelicGUI);
+//            if (blockType == EnumSculptureBlockType.FormedBase || blockType == EnumSculptureBlockType.Render)
+//                GuiHandler.openGui(player, world, pos, facing);
+//            else if (blockType == EnumSculptureBlockType.FormedStone)
+            GuiHandler.openGui(player, world, pos, facing);
         }
 
         return true;

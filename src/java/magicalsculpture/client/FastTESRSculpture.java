@@ -23,7 +23,7 @@ public class FastTESRSculpture extends FastTESR<TileEntitySculpture.Render> {
     @Override
     public void renderTileEntityFast(TileEntitySculpture.Render te, double x, double y, double z, float partialTicks, int destroyStage, VertexBuffer buffer) {
         BlockPos pos = te.getPos();
-        buffer.setTranslation(x-pos.getX(), y-pos.getY(), z-pos.getZ());
+        buffer.setTranslation(x-pos.getX()+0.5, y-pos.getY(), z-pos.getZ()+0.5);
 
         int facing = te.getRenderFacing().ordinal() - 2;
         boolean mirrored = te.isMirrored();
