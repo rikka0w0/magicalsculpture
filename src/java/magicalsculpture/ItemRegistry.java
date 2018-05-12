@@ -1,18 +1,26 @@
 package magicalsculpture;
 
-import magicalsculpture.item.ItemMisc;
+import magicalsculpture.item.ItemAmplifier;
+import magicalsculpture.item.ItemChisel;
+import magicalsculpture.item.ItemRelic;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class ItemRegistry {
-	public static ItemMisc itemMisc;
+	public static ItemChisel itemChisel;
+	public static ItemRelic itemRelic;
+	public static ItemAmplifier itemAmplifier;
 	
 	public static void initItems() {
-		itemMisc = new ItemMisc();
+		itemChisel = new ItemChisel();
+		itemRelic = new ItemRelic();
+		itemAmplifier = new ItemAmplifier();
 	}
 	
 	public static void registerItems(IForgeRegistry registry) {
 		registry.registerAll(
-				itemMisc
+				itemChisel,
+                itemRelic,
+				itemAmplifier
 				);
 	}
 }

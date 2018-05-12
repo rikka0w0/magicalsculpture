@@ -4,21 +4,21 @@ import magicalsculpture.CreativeTab;
 import rikka.librikka.item.ISimpleTexture;
 import rikka.librikka.item.ItemBase;
 
-public class ItemMisc extends ItemBase implements ISimpleTexture{
-    private static final String[] subNames = {"chisel", "qwq"};
+public class ItemRelic extends ItemBase implements ISimpleTexture{
+    private static final String[] subNames = {"qwq", "qaq"};
 
-    public ItemMisc() {
-        super("magicalsculptureitems", true);
+    public ItemRelic() {
+        super("relic", true);
         setCreativeTab(CreativeTab.instance);
     }
 
     @Override
     public String[] getSubItemUnlocalizedNames() {
-        return ItemMisc.subNames;
+        return ItemRelic.subNames;
     }
 
     @Override
     public String getIconName(int i) {
-        return subNames[i];
+        return "relic_" + subNames[i];
     }
 }

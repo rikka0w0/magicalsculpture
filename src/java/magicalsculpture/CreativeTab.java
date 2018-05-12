@@ -16,6 +16,6 @@ public class CreativeTab extends CreativeTabs{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getTabIconItem() {
-		return new ItemStack(BlockRegistry.blockSculpture, 1 , 0);
+		return new ItemStack(ItemRegistry.itemChisel, 1);
 	}
 }

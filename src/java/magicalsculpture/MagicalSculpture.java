@@ -69,6 +69,7 @@ public class MagicalSculpture {
         BlockRegistry.registerTileEntities();
 
         proxy.init();
+        Recipes.registerRecipes();
 
         //Register GUI handler
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());

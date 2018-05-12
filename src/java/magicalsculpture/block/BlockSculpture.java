@@ -166,38 +166,13 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
             return false;
 
         EnumSculptureBlockType blockType = state.getValue(EnumSculptureBlockType.property);
-        if (!blockType.formed) {
-            if (world.isRemote)
-                return false;
+        if (!blockType.formed)
+            return false;
 
-            if (player.getHeldItem(player.getActiveHand()).isItemEqualIgnoreDurability(new ItemStack(ItemRegistry.itemMisc, 1,0))) {
-                MultiBlockStructure.Result ret = this.structureTemplate.attempToBuild(world, pos);
-                if (ret != null) {
-                    EnumFacing playerSight = Utils.getPlayerSightHorizontal(player);
-                    ret.createStructure();
-
-                    TileEntity te = world.getTileEntity(pos);
-                    if (te instanceof TileEntitySculpture) {
-                       BlockPos renderPos = ((TileEntitySculpture)te).getRenderPos();
-                       te =  world.getTileEntity(renderPos);
-                       if (te instanceof TileEntitySculpture.Render) {
-                           ((TileEntitySculpture.Render)te).setRenderFacing(playerSight);
-                       }
-                    }
-
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
 
         //When openGui() is call on the server side, Forge seems automatically send a packet to client side
         //in order to notify the client to set up the container and show the Gui.
         if (!world.isRemote) {
-//            if (blockType == EnumSculptureBlockType.FormedBase || blockType == EnumSculptureBlockType.Render)
-//                GuiHandler.openGui(player, world, pos, facing);
-//            else if (blockType == EnumSculptureBlockType.FormedStone)
             GuiHandler.openGui(player, world, pos, facing);
         }
 

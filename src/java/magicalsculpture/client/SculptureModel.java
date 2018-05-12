@@ -37,7 +37,7 @@ public class SculptureModel implements IModel, IBakedModel {
         ImmutableList.Builder<Pair<IModel, IModelState>> builder = ImmutableList.builder();
         List<Variant> variants = new LinkedList<Variant>();
         boolean uvLock = false;
-
+        // IModel model = OBJLoader.INSTANCE.loadModel(new ResourceLocation("magicalsculpture:models/sculpture.obj"));
         Variant variant = new Variant(new ResourceLocation(modelName), ModelRotation.X0_Y0, uvLock, 1);
 
         ResourceLocation loc = variant.getModelLocation();
