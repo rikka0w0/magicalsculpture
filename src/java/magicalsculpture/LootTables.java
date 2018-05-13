@@ -11,6 +11,7 @@ import scala.collection.mutable.HashTable;
 @Mod.EventBusSubscriber(modid = MagicalSculpture.MODID)
 public class LootTables {
     private final static ResourceLocation dungeon = new ResourceLocation(MagicalSculpture.MODID,"inject/simple_dungeon");
+    private final static ResourceLocation nether_bridge = new ResourceLocation(MagicalSculpture.MODID,"inject/nether_bridge");
     private final static ResourceLocation blaze = new ResourceLocation(MagicalSculpture.MODID,"inject/blaze");
     private final static ResourceLocation elder_guardian = new ResourceLocation(MagicalSculpture.MODID,"inject/elder_guardian");
     private final static ResourceLocation fishing = new ResourceLocation(MagicalSculpture.MODID,"inject/fishing");
@@ -35,8 +36,10 @@ public class LootTables {
         LootTable lootTable = evt.getTable();
         String tableFileName = evt.getName().getResourcePath();
 
-        if (tableFileName.equals("chests/spawn_bonus_chest"))
+        if (tableFileName.equals("chests/simple_dungeon"))
             lootTable.addPool(loadLootPool(dungeon));
+        else if (tableFileName.equals("chests/nether_bridge"))
+            lootTable.addPool(loadLootPool(nether_bridge));
         else if (tableFileName.equals("entities/blaze"))
             lootTable.addPool(loadLootPool(blaze));
         else if (tableFileName.equals("entities/elder_guardian"))

@@ -1,26 +1,23 @@
 {
   "pools": [
     {
-      "name": "magicalsculpture_fishing",
+      "name": "magicalsculpture_nether_bridge",
       "rolls": 1,
       "entries": [
         {
           "type": "item",
           "name": "magicalsculpture:relic",
-          "weight": 5,
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_data",
-              "data": {
-                "min": 42,
-                "max": 48
-              }
+              "data": 13
             }
           ]
         },
         {
           "type": "empty",
-          "weight": 95
+          "weight": 90
         }
       ]
     }

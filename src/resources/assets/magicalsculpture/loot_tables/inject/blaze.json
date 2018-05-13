@@ -6,24 +6,21 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "magicalsculpture:magicalsculpture",
-                    "weight": 1,
+                    "name": "magicalsculpture:relic",
+                    "weight": 5,
                     "functions": [
                         {
                             "function": "minecraft:set_count",
-                            "count": {
-                                "min": 1,
-                                "max": 3
-                            }
+                            "count": 1
                         },
                         {
                             "function": "minecraft:set_data",
-                            "data": {
-                                "min": 0,
-                                "max": 1
-                            }
+                            "data": 14
                         }
                     ]
+                }, {
+                    "type": "empty",
+                    "weight": 95
                 }
             ],
             "conditions": [
