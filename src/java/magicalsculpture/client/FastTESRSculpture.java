@@ -24,7 +24,7 @@ public class FastTESRSculpture extends FastTESR<TileEntitySculpture.Render> {
     public void renderTileEntityFast(TileEntitySculpture.Render te, double x, double y, double z, float partialTicks, int destroyStage, VertexBuffer buffer) {
         BlockPos pos = te.getPos();
         double xoff = x-pos.getX() + 0.5F;
-        double yoff = y-pos.getY() + 1F;
+        double yoff = y-pos.getY() - 0.01F;
         double zoof = z-pos.getZ() + 0.5F;
         buffer.setTranslation(xoff, yoff, zoof);
 
