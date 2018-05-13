@@ -16,10 +16,10 @@ public class ContainerAmplifier extends ContainerInventory implements IContainer
     protected ContainerAmplifier(InventoryPlayer invPlayer, IInventory inventoryTile) {
         super(invPlayer, inventoryTile);
 
-        addSlotToContainer(new Amplifier(inventoryTile, 0, 96, 22));
-        addSlotToContainer(new Amplifier(inventoryTile, 1, 132, 22));
-        addSlotToContainer(new Amplifier(inventoryTile, 2, 96, 42));
-        addSlotToContainer(new Amplifier(inventoryTile, 3, 132, 42));
+        addSlotToContainer(new Amplifier(inventoryTile, 0, 70, 32));
+        addSlotToContainer(new Amplifier(inventoryTile, 1, 89, 32));
+        addSlotToContainer(new Amplifier(inventoryTile, 2, 70, 51));
+        addSlotToContainer(new Amplifier(inventoryTile, 3, 89, 51));
     }
 
     public static class Amplifier extends Slot {

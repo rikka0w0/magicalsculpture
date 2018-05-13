@@ -16,7 +16,7 @@ public class ContainerRelic extends ContainerInventory implements IContainerWith
     protected ContainerRelic(InventoryPlayer invPlayer, IInventory inventoryTile) {
         super(invPlayer, inventoryTile);
 
-        addSlotToContainer(new Relic(inventoryTile, 0, 96, 22));
+        addSlotToContainer(new Relic(inventoryTile, 0, 80, 35));
     }
 
 
