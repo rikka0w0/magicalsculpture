@@ -1,5 +1,6 @@
 package magicalsculpture.block;
 
+import magicalsculpture.ItemRegistry;
 import magicalsculpture.client.GuiAmplifier;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -28,7 +29,12 @@ public class ContainerAmplifier extends ContainerInventory implements IContainer
 
         @Override
         public boolean isItemValid(ItemStack itemStack) {
-            return true;//itemStack.getItem() instanceof ItemFireExtinguisher;
+            return itemStack.getItem() == ItemRegistry.itemAmplifier;
+        }
+
+        @Override
+        public int getSlotStackLimit() {
+            return 1;
         }
     }
 

@@ -1,5 +1,6 @@
 package magicalsculpture.block;
 
+import magicalsculpture.ItemRegistry;
 import magicalsculpture.client.GuiRelic;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -26,7 +27,12 @@ public class ContainerRelic extends ContainerInventory implements IContainerWith
 
         @Override
         public boolean isItemValid(ItemStack itemStack) {
-            return true;//itemStack.getItem() instanceof ItemFireExtinguisher;
+            return itemStack.getItem() == ItemRegistry.itemRelic;
+        }
+
+        @Override
+        public int getSlotStackLimit() {
+            return 1;
         }
     }
 

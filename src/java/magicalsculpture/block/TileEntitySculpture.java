@@ -1,5 +1,7 @@
 package magicalsculpture.block;
 
+import magicalsculpture.ItemRegistry;
+import magicalsculpture.item.ItemAmplifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Container;
@@ -155,13 +157,29 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
                 return;
             }
 
+            if (inventoryRelic.isEmpty())
+                return;
+            ItemStack itemRelic = inventoryRelic.getStackInSlot(0);
+            //PotionEffect[] buffs = ItemRegistry.itemRelic.relicEffect[itemRelic.getItemDamage()];
+
+            int range = 4;  // Base range
+            for (int i=0; i<inventoryAmplifier.getSizeInventory(); i++) {
+                ItemStack stack = inventoryAmplifier.getStackInSlot(i);
+                if (!stack.isEmpty() && stack.getItem() == ItemRegistry.itemAmplifier && stack.getItemDamage() < 4) {
+                    range += ItemRegistry.itemAmplifier.amplifierVal[stack.getItemDamage()];
+                }
+            }
+
             //Scan for players
-            List<EntityPlayer> playerList = world.getEntitiesWithinAABB(EntityPlayer.class, (new AxisAlignedBB(-4, 0 , -4 , 4, 10, 4)).offset(pos).offset(1, 0, 1));
+            List<EntityPlayer> playerList = world.getEntitiesWithinAABB(EntityPlayer.class, (new AxisAlignedBB(-range, -range , -range , range, 5+range, range)).offset(pos).offset(1, 0, 1));
             if (playerList == null)
                 return;
 
+
+
             for (EntityPlayer player: playerList) {
-                player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 100, 0));
+                player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 100, 1));
+                player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 100, 0));
             }
         }
     }

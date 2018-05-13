@@ -5,7 +5,8 @@ import rikka.librikka.item.ISimpleTexture;
 import rikka.librikka.item.ItemBase;
 
 public class ItemAmplifier extends ItemBase implements ISimpleTexture {
-    private static final String[] subNames = {"qwq", "qaq"};
+    private static final String[] subNames = {"0", "1", "2", "3"};
+    public static final int[] amplifierVal = {4, 8, 12, 16};
 
     public ItemAmplifier() {
         super("amplifier", true);
