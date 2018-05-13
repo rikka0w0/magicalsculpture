@@ -2,6 +2,7 @@ package magicalsculpture.item;
 
 import magicalsculpture.CreativeTab;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.translation.I18n;
@@ -21,9 +22,6 @@ public class ItemRelic extends ItemBase implements ISimpleTexture{
             subNames[i] = String.valueOf(i);
         }
     }
-    public static final PotionEffect relicEffect[][] = {
-
-    };
 
     public ItemRelic() {
         super("relic", true);
@@ -46,4 +44,57 @@ public class ItemRelic extends ItemBase implements ISimpleTexture{
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.translateToLocal("item.magicalsculpture:relic." + stack.getItemDamage() + ".comment"));
     }
+
+    public static final Object relicEffect[][] = {
+            {MobEffects.REGENERATION, 0},       // 0
+            {MobEffects.RESISTANCE, 0},
+            {MobEffects.STRENGTH, 0},
+            {MobEffects.SPEED, 0},
+            {MobEffects.NIGHT_VISION, 0},
+            {MobEffects.HEALTH_BOOST},          // 5
+            {MobEffects.NAUSEA, 0},
+            {MobEffects.JUMP_BOOST, 0},
+            {MobEffects.MINING_FATIGUE, 0},
+            {MobEffects.WEAKNESS, 0},
+            {MobEffects.HASTE, 0},              // 10
+            {MobEffects.HUNGER, 0},
+            {MobEffects.INVISIBILITY, 0},
+            {MobEffects.GLOWING, 0},
+            {MobEffects.FIRE_RESISTANCE, 0},
+            {MobEffects.WATER_BREATHING, 0},    // 15
+            {MobEffects.FIRE_RESISTANCE, 0, MobEffects.WATER_BREATHING, 0},
+            {MobEffects.REGENERATION, 1, MobEffects.HUNGER, 0},
+            {MobEffects.RESISTANCE, 1, MobEffects.MINING_FATIGUE, 1},
+            {MobEffects.STRENGTH, 2, MobEffects.MINING_FATIGUE, 4},
+            {MobEffects.STRENGTH, 0, MobEffects.RESISTANCE, 0, MobEffects.NAUSEA, 0}, // 20
+            {MobEffects.STRENGTH, 1, MobEffects.SLOWNESS, 0},
+            {MobEffects.STRENGTH, 3, MobEffects.SLOWNESS, 1},
+            {MobEffects.BLINDNESS, 0, MobEffects.NAUSEA, 0, MobEffects.REGENERATION, 0},
+            {MobEffects.REGENERATION, 2, MobEffects.NAUSEA, 0, MobEffects.WEAKNESS, 0},
+            {MobEffects.SATURATION, 0, MobEffects.POISON, 0},   // 25
+            {MobEffects.HASTE, 1},
+            {MobEffects.RESISTANCE, 4, MobEffects.WEAKNESS, 4},
+            {MobEffects.RESISTANCE, 2},
+            {MobEffects.STRENGTH, 0, MobEffects.WEAKNESS, 0, MobEffects.SPEED, 0, MobEffects.SLOWNESS, 0},
+            {MobEffects.STRENGTH, 2, MobEffects.RESISTANCE, 2}, // 30
+            {MobEffects.NAUSEA, 0, MobEffects.SPEED, 4, MobEffects.JUMP_BOOST, 0, MobEffects.WEAKNESS, 0, MobEffects.MINING_FATIGUE, 0},
+            {MobEffects.SLOWNESS, 0, MobEffects.STRENGTH, 1},
+            {MobEffects.WEAKNESS, 0, MobEffects.JUMP_BOOST, 1},
+            {MobEffects.WEAKNESS, 0, MobEffects.RESISTANCE, 1},
+            {MobEffects.JUMP_BOOST, 1, MobEffects.SPEED, 0},    // 35
+            {MobEffects.STRENGTH, 0, MobEffects.HASTE, 0},
+            {MobEffects.SATURATION, 0, MobEffects.HUNGER, 0},
+            {MobEffects.INVISIBILITY, 0, MobEffects.SPEED, 2},
+            {MobEffects.INVISIBILITY, 0, MobEffects.STRENGTH, 1, MobEffects.REGENERATION, 0},
+            {MobEffects.SPEED, 2, MobEffects.JUMP_BOOST, 1},    // 40
+            {MobEffects.GLOWING, 0, MobEffects.ABSORPTION, 1},
+            {MobEffects.WEAKNESS, 0, MobEffects.SATURATION, 0},
+            {MobEffects.HUNGER, 0, MobEffects.LUCK, 0},
+            {MobEffects.SLOWNESS, 0, MobEffects.WATER_BREATHING, 0},
+            {MobEffects.STRENGTH, 0},   // 45
+            {MobEffects.RESISTANCE, 0},
+            {MobEffects.SPEED, 0},
+            {MobEffects.ABSORPTION, 0},
+            {MobEffects.STRENGTH, 1, MobEffects.RESISTANCE, 1, MobEffects.SPEED, 1, MobEffects.ABSORPTION, 2}   // 49
+    };
 }

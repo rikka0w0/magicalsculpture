@@ -7,6 +7,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -22,7 +23,9 @@ import rikka.librikka.multiblock.IMultiBlockTile;
 import rikka.librikka.multiblock.MultiBlockTileInfo;
 import rikka.librikka.tileentity.IGuiProviderTile;
 import rikka.librikka.tileentity.TileEntityBase;
+import scala.Int;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class TileEntitySculpture extends TileEntityBase implements IMultiBlockTile, IGuiProviderTile {
@@ -159,8 +162,6 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
 
             if (inventoryRelic.isEmpty())
                 return;
-            ItemStack itemRelic = inventoryRelic.getStackInSlot(0);
-            //PotionEffect[] buffs = ItemRegistry.itemRelic.relicEffect[itemRelic.getItemDamage()];
 
             int range = 4;  // Base range
             for (int i=0; i<inventoryAmplifier.getSizeInventory(); i++) {
@@ -175,11 +176,17 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
             if (playerList == null)
                 return;
 
-
+            ItemStack itemRelic = inventoryRelic.getStackInSlot(0);
+            Object[] objects = ItemRegistry.itemRelic.relicEffect[itemRelic.getItemDamage()];
+            PotionEffect[] effects = new PotionEffect[objects.length / 2];
+            for (int i=0; i<effects.length; i++) {
+                effects[i] = new PotionEffect((Potion)objects[2*i], 100, (Integer)objects[2*i+1]);
+            }
 
             for (EntityPlayer player: playerList) {
-                player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 100, 1));
-                player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 100, 0));
+                for (int i=0; i<effects.length; i++) {
+                    player.addPotionEffect(effects[i]);
+                }
             }
         }
     }
