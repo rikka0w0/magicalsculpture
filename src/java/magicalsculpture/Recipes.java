@@ -17,13 +17,26 @@ public class Recipes {
                 'I', Items.IRON_INGOT
         });
 
+        // Sculpture base
+        GameRegistry.addRecipe(new ItemStack(BlockRegistry.blockSculpture, 4, 0 ), new Object[]{
+                "SSS",
+                "SCS",
+                "SSS",
+                'S', Blocks.STONE,
+                'C', Blocks.CHEST
+        });
+
         // Sculpture Stone
         GameRegistry.addRecipe(new ItemStack(BlockRegistry.blockSculpture, 4, 1 ), new Object[]{
-                "BBB",
-                "BDB",
-                "BBB",
-                'D', Items.DIAMOND,
-                'B', Blocks.BRICK_BLOCK
+                "SSS",
+                "SDS",
+                "SSS",
+                'S', Blocks.STONE,
+                'D', Items.DIAMOND
         });
+
+        // Reverser
+        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemReverser,1), new ItemStack(ItemRegistry.itemRelic, 1, 29), Items.GLOWSTONE_DUST, Items.REDSTONE);
+
     }
 }

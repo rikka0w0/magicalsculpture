@@ -45,6 +45,21 @@ public class ItemRelic extends ItemBase implements ISimpleTexture{
         tooltip.add(I18n.translateToLocal("item.magicalsculpture:relic." + stack.getItemDamage() + ".comment"));
     }
 
+    // Crafting
+    @Override
+    public ItemStack getContainerItem(ItemStack itemStack) {
+        if (!hasContainerItem(itemStack)) {
+            return ItemStack.EMPTY;
+        }
+        return new ItemStack(this, 1, 29);
+    }
+
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return stack.getItemDamage() == 29;
+    }
+
+    // Effects
     public static final Object relicEffect[][] = {
             {MobEffects.REGENERATION, 0},       // 0
             {MobEffects.RESISTANCE, 0},

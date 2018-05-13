@@ -25,6 +25,7 @@ public class ClientRegistrationHandler {
 
 		//Items
 		loader.registerInventoryIcon(ItemRegistry.itemChisel);
+		loader.registerInventoryIcon(ItemRegistry.itemReverser);
 		loader.registerInventoryIcon(ItemRegistry.itemRelic);
 		loader.registerInventoryIcon(ItemRegistry.itemAmplifier);
 	}

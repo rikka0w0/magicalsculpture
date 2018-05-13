@@ -7,8 +7,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -63,9 +65,9 @@ public class CustomStateMapper extends StateMapperBase implements IModelLoader {
 
             switch (blockType) {
                 case Base:
-                    return new SingleTextureModel(blockDomain, "base", true);
+                    return ModelLoaderRegistry.getModel(new ResourceLocation(domain, "block/base"));
                 case Stone:
-                    return new SingleTextureModel(blockDomain, "stone", true);
+                    return ModelLoaderRegistry.getModel(new ResourceLocation(domain, "block/stone"));
                 case Render:
                     return new SculptureModel();
                 default:

@@ -7,6 +7,7 @@ tile.magicalsculpture:magicalsculpture.stone.name=雕像石
 
 # Items
 item.magicalsculpture:chisel.name=雕像凿
+item.magicalsculpture:reverser.name=轮回之粉
 
 item.magicalsculpture:amplifier.0.name=末影珍珠增幅器
 item.magicalsculpture:amplifier.1.name=一级增幅器
