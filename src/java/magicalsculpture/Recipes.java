@@ -38,6 +38,42 @@ public class Recipes {
                 'D', Items.DIAMOND
         );
 
+        // Amplifier
+        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 0 ),
+                "I.I",
+                "IPI",
+                "III",
+                'I', Items.IRON_INGOT,
+                'P', Items.ENDER_PEARL
+        );
+
+        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 1 ),
+                "IRI",
+                "IDI",
+                "III",
+                'I', Items.IRON_INGOT,
+                'R', Items.REDSTONE,
+                'D', Items.DIAMOND
+        );
+
+        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 2 ),
+                "IDI",
+                "DXD",
+                "IDI",
+                'I', Items.IRON_INGOT,
+                'X', new ItemStack(ItemRegistry.itemAmplifier, 1, 1 ),
+                'D', Items.DIAMOND
+        );
+
+        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 3 ),
+                "ADA",
+                "DXD",
+                "ADA",
+                'A', new ItemStack(ItemRegistry.itemAmplifier, 1, 0 ),
+                'X', new ItemStack(ItemRegistry.itemAmplifier, 1, 2 ),
+                'D', Items.DIAMOND
+        );
+
         // Reverser
         GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemReverser,1),
                 new ItemStack(ItemRegistry.itemRelic, 1, 29), Items.GLOWSTONE_DUST, Items.REDSTONE);
