@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,9 +31,10 @@ import java.util.List;
 public class BlockSculpture extends BlockBase implements ISubBlock {
     private static final String[] subNames = EnumSculptureBlockType.getRawStructureNames();
     public final MultiBlockStructure structureTemplate;
+    private static final String blockName = "magicalsculpture";
 
     public BlockSculpture()  {
-        super("magicalsculpture", Material.ROCK, ItemBlockBase.class);
+        super(blockName, Material.ROCK, ItemBlockBase.class);
         this.structureTemplate = this.createStructureTemplate();
         setCreativeTab(CreativeTab.instance);
         setHardness(3.0F);
@@ -238,5 +240,18 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+        EnumSculptureBlockType blockType = EnumSculptureBlockType.fromInt(stack.getItemDamage());
+        if (blockType == null)
+            return;
+
+        if (blockType.formed)
+            return;
+
+        tooltip.add(I18n.translateToLocal("tile.magicalsculpture:" + blockName + "." + blockType.getName() + ".comment"));
     }
 }

@@ -43,6 +43,7 @@ public class ItemRelic extends ItemBase implements ISimpleTexture{
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.translateToLocal("item.magicalsculpture:relic." + stack.getItemDamage() + ".comment"));
+        tooltip.add(I18n.translateToLocal("item.magicalsculpture:relic.comment"));
     }
 
     // Crafting
@@ -66,7 +67,7 @@ public class ItemRelic extends ItemBase implements ISimpleTexture{
             {MobEffects.STRENGTH, 0},
             {MobEffects.SPEED, 0},
             {MobEffects.NIGHT_VISION, 0},
-            {MobEffects.HEALTH_BOOST},          // 5
+            {MobEffects.HEALTH_BOOST, 0},          // 5
             {MobEffects.NAUSEA, 0},
             {MobEffects.JUMP_BOOST, 0},
             {MobEffects.MINING_FATIGUE, 0},

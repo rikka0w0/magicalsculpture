@@ -3,18 +3,25 @@ itemGroup.magicalsculpture=魔法雕像
 
 # Blocks
 tile.magicalsculpture:magicalsculpture.base.name=雕像底座
+tile.magicalsculpture:magicalsculpture.base.comment=把雕像底座以2x2x1的形式摆在地上，在上面摆上2x2x4的雕像石，再拿雕像凿敲击一下，一座魔法雕像就诞生了。
 tile.magicalsculpture:magicalsculpture.stone.name=雕像石
+tile.magicalsculpture:magicalsculpture.stone.comment=把雕像底座以2x2x1的形式摆在地上，在上面摆上2x2x4的雕像石，再拿雕像凿敲击一下，一座魔法雕像就诞生了。
+
+# Gui
+gui.magicalsculpture:relic=圣物放置槽
+gui.magicalsculpture:amplifier=增幅放置槽
 
 # Items
 item.magicalsculpture:chisel.name=雕像凿
 item.magicalsculpture:reverser.name=轮回之粉
+item.magicalsculpture:reverser.comment=它会附着在圣物之上……并把它们同化成绿宝石！
 
 item.magicalsculpture:amplifier.0.name=末影珍珠增幅器
 item.magicalsculpture:amplifier.1.name=一级增幅器
 item.magicalsculpture:amplifier.2.name=二级增幅器
 item.magicalsculpture:amplifier.3.name=三级增幅器
 
-
+item.magicalsculpture:relic.comment=[圣物]把它放在魔法雕像的圣物槽中来发挥作用！
 item.magicalsculpture:relic.0.name=黄金之心
 item.magicalsculpture:relic.0.comment=经典的金苹果，经典的生命恢复
 item.magicalsculpture:relic.1.name=钢铁之庇护
@@ -114,4 +121,4 @@ item.magicalsculpture:relic.47.comment=一本来自河中的附魔书,可惜书�
 item.magicalsculpture:relic.48.name=黄金祝福
 item.magicalsculpture:relic.48.comment=一本来自河中的附魔书,可惜书页上的字已经无法辨识,故无法用于附魔
 item.magicalsculpture:relic.49.name=远古的智慧
-item.magicalsculpture:relic.49.comment=一本来自河中的附魔书,可惜书页上的字已经无法辨识,故无法用于附魔
+item.magicalsculpture:relic.49.comment=知识就是力量——和抗性、移动速度加快与伤害吸收

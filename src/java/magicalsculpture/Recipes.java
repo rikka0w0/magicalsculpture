@@ -128,7 +128,7 @@ public class Recipes {
                 "RGR",
                 "RRR",
                 'R', Items.ROTTEN_FLESH,
-                'G', Items.GOLDEN_APPLE
+                'G', new ItemStack(ItemRegistry.itemRelic, 1, 0)
         );
 
         // 18 - Dungeon 1
