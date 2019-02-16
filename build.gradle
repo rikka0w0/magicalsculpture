@@ -40,6 +40,7 @@ sourceSets {
     main {
         java {
             srcDir "src/java"
+            srcDir "librikka/src"
         }
         resources {
             srcDir "src/resources"
@@ -64,19 +65,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-repositories {
-    mavenCentral()
-    jcenter()
-    maven{
-		name = "librikka"
-        url = 'https://dl.bintray.com/manageryzy/librikka'
-    }
-}
-
-dependencies {
-	compile 'rikka.librikka:librikka:+:dev'
 }
 
 
