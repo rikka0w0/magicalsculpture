@@ -1,7 +1,7 @@
 package magicalsculpture.client;
 
 import magicalsculpture.block.TileEntitySculpture;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.model.animation.FastTESR;
@@ -21,7 +21,7 @@ public class FastTESRSculpture extends FastTESR<TileEntitySculpture.Render> {
     }
 
     @Override
-    public void renderTileEntityFast(TileEntitySculpture.Render te, double x, double y, double z, float partialTicks, int destroyStage, VertexBuffer buffer) {
+    public void renderTileEntityFast(TileEntitySculpture.Render te, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
         BlockPos pos = te.getPos();
         double xoff = x-pos.getX() + 0.5F;
         double yoff = y-pos.getY() - 0.01F;

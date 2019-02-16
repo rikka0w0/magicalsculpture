@@ -1,5 +1,6 @@
 package magicalsculpture;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockRedFlower;
 import net.minecraft.init.Blocks;
@@ -7,21 +8,50 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Recipes {
+    static void addShapedRecipe(ItemStack output, Object... params) {
+        ResourceLocation name = new ResourceLocation(MagicalSculpture.MODID,
+                output.getUnlocalizedName().replace("tile.", "").replace(MagicalSculpture.MODID+".", ""));
+        GameRegistry.addShapedRecipe(name, null, output, params);
+    }
+
+    static void addShapelessRecipe(ItemStack output, Object... params) {
+        ResourceLocation name = new ResourceLocation(MagicalSculpture.MODID,
+                output.getUnlocalizedName().replace("tile.", "").replace(MagicalSculpture.MODID+".", ""));
+
+        Ingredient[] ingredients = new Ingredient[params.length];
+        for (int i=0; i< params.length; i++) {
+            Object param = params[i];
+            if (param instanceof ItemStack) {
+                ingredients[i] = Ingredient.fromStacks((ItemStack)param);
+            } else if (param instanceof Item) {
+                ingredients[i] = Ingredient.fromItem((Item)param);
+            } else if (param instanceof Block) {
+                ingredients[i] = Ingredient.fromStacks(new ItemStack((Block)param));
+            } else {
+                // WTF??
+                throw new RuntimeException("WTF??");
+            }
+        }
+
+        GameRegistry.addShapelessRecipe(name, null, output, ingredients);
+    }
+
     public static void registerRecipes() {
-        // Sculpture Chisel
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemChisel, 1),
-                "...",
-                ".O.",
-                "I..",
-                'O', Blocks.OBSIDIAN,
-                'I', Items.IRON_INGOT
-        );
+        // Reverser
+        for (int i=0; i<ItemRegistry.itemRelic.numOfRelic; i++)
+            GameRegistry.addShapelessRecipe(new ResourceLocation(MagicalSculpture.MODID,"reveral_relic_"+i),
+                    null,
+                    new ItemStack(Items.EMERALD, 1),
+
+                    Ingredient.fromStacks(new ItemStack(ItemRegistry.itemRelic, 1, i)), Ingredient.fromItem(ItemRegistry.itemReverser));
 
         // Sculpture base
-        GameRegistry.addShapedRecipe(new ItemStack(BlockRegistry.blockSculpture, 4, 0 ),
+        addShapedRecipe(new ItemStack(BlockRegistry.blockSculpture, 4, 0 ),
                 "SSS",
                 "SCS",
                 "SSS",
@@ -30,7 +60,7 @@ public class Recipes {
         );
 
         // Sculpture Stone
-        GameRegistry.addShapedRecipe(new ItemStack(BlockRegistry.blockSculpture, 4, 1 ),
+        addShapedRecipe(new ItemStack(BlockRegistry.blockSculpture, 4, 1 ),
                 "SSS",
                 "SDS",
                 "SSS",
@@ -39,15 +69,15 @@ public class Recipes {
         );
 
         // Amplifier
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 0 ),
-                "I.I",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 0 ),
+                "I I",
                 "IPI",
                 "III",
                 'I', Items.IRON_INGOT,
                 'P', Items.ENDER_PEARL
         );
 
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 1 ),
+        addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 1 ),
                 "IRI",
                 "IDI",
                 "III",
@@ -56,7 +86,7 @@ public class Recipes {
                 'D', Items.DIAMOND
         );
 
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 2 ),
+        addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 2 ),
                 "IDI",
                 "DXD",
                 "IDI",
@@ -65,7 +95,7 @@ public class Recipes {
                 'D', Items.DIAMOND
         );
 
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 3 ),
+        addShapedRecipe(new ItemStack(ItemRegistry.itemAmplifier, 1, 3 ),
                 "ADA",
                 "DXD",
                 "ADA",
@@ -74,49 +104,44 @@ public class Recipes {
                 'D', Items.DIAMOND
         );
 
-        // Reverser
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemReverser,1),
-                new ItemStack(ItemRegistry.itemRelic, 1, 29), Items.GLOWSTONE_DUST, Items.REDSTONE);
-        for (int i=0; i<ItemRegistry.itemRelic.numOfRelic; i++)
-            GameRegistry.addShapelessRecipe(new ItemStack(Items.EMERALD, 1), new ItemStack(ItemRegistry.itemRelic, 1, i), ItemRegistry.itemReverser);
 
         // Relic
         // 0
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 0 ),
-                "G.G",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 0 ),
+                "G G",
                 "GGG",
-                ".G.",
+                " G ",
                 'G', Items.GOLDEN_APPLE
         );
 
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 1 ),
-                "I.I",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 1 ),
+                "I I",
                 "ICI",
-                ".I.",
+                " I ",
                 'I', Items.IRON_INGOT,
                 'C', Items.IRON_CHESTPLATE
         );
 
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 2 ),
-                ".I.",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 2 ),
+                " I ",
                 "III",
                 "ISI",
                 'I', Items.IRON_INGOT,
                 'S', Items.IRON_SWORD
         );
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 3),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 3),
                 Items.ENDER_PEARL, Items.FEATHER);
 
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 4),
-                ".E.",
-                ".P.",
-                "E.E",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 4),
+                " E ",
+                " P ",
+                "E E",
                 'E', Items.SPIDER_EYE,
                 'P', Items.ENDER_PEARL);
 
         // 5
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 5),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 5),
                 new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.POPPY.getMeta()),
                 new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.BLUE_ORCHID.getMeta()),
                 new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.ALLIUM.getMeta()),
@@ -125,22 +150,22 @@ public class Recipes {
                 new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.PINK_TULIP.getMeta())
         );
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 6),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 6),
                 Blocks.BROWN_MUSHROOM,
                 Blocks.RED_MUSHROOM
         );
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 7),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 7),
                 Items.ENDER_PEARL,
                 Items.CARROT
         );
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 8),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 8),
                 Blocks.OBSIDIAN,
                 Items.DIAMOND
         );
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 9),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 9),
                 Blocks.OBSIDIAN,
                 new ItemStack(ItemRegistry.itemRelic, 1, 2 )
         );
@@ -153,13 +178,13 @@ public class Recipes {
         // 15 - Elder guardian
 
         // 16
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 16),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 16),
                 new ItemStack(ItemRegistry.itemRelic, 1, 14),
                 new ItemStack(ItemRegistry.itemRelic, 1, 15)
         );
 
         // 17
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 17),
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 17),
                 "RRR",
                 "RGR",
                 "RRR",
@@ -173,7 +198,7 @@ public class Recipes {
         // 21 - Dungeon 2
 
         // 22
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 22),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 22),
                 new ItemStack(ItemRegistry.itemRelic, 1, 21),
                 new ItemStack(ItemRegistry.itemRelic, 1, 21)
         );
@@ -181,7 +206,7 @@ public class Recipes {
         // 23 - Dungeon 2
 
         // 24
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 24),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 24),
                 new ItemStack(ItemRegistry.itemRelic, 1, 0),
                 new ItemStack(ItemRegistry.itemRelic, 1, 23)
         );
@@ -189,23 +214,23 @@ public class Recipes {
         // 25 - Dungeon 2
 
         // 26
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 26),
-                ".D.",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 26),
+                " D ",
                 "DCD",
-                ".D.",
+                " D ",
                 'D', Items.DIAMOND,
                 'C', Items.COMPASS
         );
 
         // 27 - Dungeon 1
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 27),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 27),
                 Items.GOLD_INGOT,
                 new ItemStack(ItemRegistry.itemRelic, 1, 46),
                 new ItemStack(ItemRegistry.itemRelic, 1, 1)
         );
 
         // 28
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 28),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 28),
                 new ItemStack(ItemRegistry.itemRelic, 1, 1),
                 new ItemStack(ItemRegistry.itemRelic, 1, 18),
                 new ItemStack(ItemRegistry.itemRelic, 1, 1)
@@ -214,7 +239,7 @@ public class Recipes {
         // 29 - Dungeon 2
 
         // 30
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 30),
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 30),
                 "GSG",
                 "GUG",
                 "GDG",
@@ -225,7 +250,7 @@ public class Recipes {
         );
 
         // 31
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 31),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 31),
                 new ItemStack(ItemRegistry.itemRelic, 1, 3),
                 new ItemStack(ItemRegistry.itemRelic, 1, 7),
                 new ItemStack(ItemRegistry.itemRelic, 1, 47),
@@ -240,8 +265,8 @@ public class Recipes {
         // 37 - Dungeon 2
 
         // 38
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 38),
-                "W.W",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 38),
+                "W W",
                 "WFW",
                 "WIW",
                 'W', new ItemStack(Blocks.WOOL, 1, EnumDyeColor.BLACK.getMetadata()),
@@ -250,10 +275,10 @@ public class Recipes {
         );
 
         // 39
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 39),
-                ".ID",
-                ".SG",
-                "S..",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 39),
+                " ID",
+                " SG",
+                "S  ",
                 'I', new ItemStack(ItemRegistry.itemRelic, 1, 12),
                 'D', Items.DIAMOND,
                 'S', Items.STICK,
@@ -261,17 +286,17 @@ public class Recipes {
         );
 
         // 40
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 40),
-                ".D.",
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 40),
+                " D ",
                 "FCF",
-                ".F.",
+                " F ",
                 'F', new ItemStack(ItemRegistry.itemRelic, 1, 3),
                 'D', Items.DIAMOND,
                 'C', Items.CLOCK
         );
 
         // 41
-        GameRegistry.addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 41),
+        addShapedRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 41),
                 "NPN",
                 "NGN",
                 "NNN",
@@ -289,7 +314,7 @@ public class Recipes {
         // 48 - Fishing 0.8
 
         // 49
-        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 49),
+        addShapelessRecipe(new ItemStack(ItemRegistry.itemRelic, 1, 49),
                 new ItemStack(ItemRegistry.itemRelic, 1, 45),
                 new ItemStack(ItemRegistry.itemRelic, 1, 46),
                 new ItemStack(ItemRegistry.itemRelic, 1, 47),

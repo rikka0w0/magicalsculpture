@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+
+  "ingredients": [
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "magicalsculpture:relic",
+      "count": 1,
+      "data": 29
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+
+  "result": {
+    "item": "magicalsculpture:reverser"
+  }
+}

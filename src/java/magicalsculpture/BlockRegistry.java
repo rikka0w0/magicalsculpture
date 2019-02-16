@@ -4,7 +4,7 @@ import magicalsculpture.block.BlockSculpture;
 import magicalsculpture.block.TileEntitySculpture;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 import rikka.librikka.block.BlockBase;
 
 public class BlockRegistry {

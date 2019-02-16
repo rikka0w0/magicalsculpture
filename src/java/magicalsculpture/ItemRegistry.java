@@ -4,7 +4,7 @@ import magicalsculpture.item.ItemAmplifier;
 import magicalsculpture.item.ItemChisel;
 import magicalsculpture.item.ItemRelic;
 import magicalsculpture.item.ItemReverser;
-import net.minecraftforge.fml.common.registry.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class ItemRegistry {
 	public static ItemChisel itemChisel;

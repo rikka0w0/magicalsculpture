@@ -2,10 +2,10 @@ package magicalsculpture.block;
 
 import magicalsculpture.CreativeTab;
 import magicalsculpture.GuiHandler;
-import magicalsculpture.ItemRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -18,7 +18,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import rikka.librikka.Utils;
 import rikka.librikka.block.BlockBase;
 import rikka.librikka.block.ISubBlock;
 import rikka.librikka.item.ItemBlockBase;
@@ -26,6 +25,7 @@ import rikka.librikka.multiblock.BlockMapping;
 import rikka.librikka.multiblock.MultiBlockStructure;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class BlockSculpture extends BlockBase implements ISubBlock {
@@ -244,7 +244,7 @@ public class BlockSculpture extends BlockBase implements ISubBlock {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
         EnumSculptureBlockType blockType = EnumSculptureBlockType.fromInt(stack.getItemDamage());
         if (blockType == null)
             return;

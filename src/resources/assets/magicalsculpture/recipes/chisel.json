@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern": [
+    " O ",
+    "I  "
+  ],
+
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "I": {
+        "item": "minecraft:iron_ingot"
+      }
+  },
+
+  "result": {
+    "item": "magicalsculpture:chisel"
+  }
+}
