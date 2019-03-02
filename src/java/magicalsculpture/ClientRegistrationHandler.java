@@ -28,6 +28,7 @@ public class ClientRegistrationHandler {
 		loader.registerInventoryIcon(ItemRegistry.itemReverser);
 		loader.registerInventoryIcon(ItemRegistry.itemRelic);
 		loader.registerInventoryIcon(ItemRegistry.itemAmplifier);
+		loader.registerInventoryIcon(ItemRegistry.itemUserGuide);
 	}
 	
 	public static void registerTileEntityRenders() {

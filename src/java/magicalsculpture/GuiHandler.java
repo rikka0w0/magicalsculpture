@@ -1,5 +1,6 @@
 package magicalsculpture;
 
+import magicalsculpture.item.ContainerUserGuide;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -11,9 +12,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import rikka.librikka.AutoGuiHandler;
 
 public class GuiHandler extends AutoGuiHandler{
-	public static enum GuiType {
+	public enum GuiType {
 		RelicGUI(7),
-		AmplifierGUI(8);
+		AmplifierGUI(8),
+		UserGuideGUI(9);
 
 		private final int GuiID;
 		GuiType(int GuiID){
@@ -30,21 +32,19 @@ public class GuiHandler extends AutoGuiHandler{
 	
 	@Override
 	protected Container getContainer(int ID, EntityPlayer player, World world, BlockPos pos) {
-		return null;
+		return GuiType.parse(ID) == GuiType.UserGuideGUI ? new ContainerUserGuide(player) : null;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected GuiScreen getGui(int ID, EntityPlayer player, World world, BlockPos pos) {
-		switch (GuiType.parse(ID)) {
-			case RelicGUI:
-				return null;
-			case AmplifierGUI:
-				return null;
-		}
 		return null;
 	}
-	
+
+	public static void openGui(EntityPlayer player, World world, GuiType gui) {
+		player.openGui(MagicalSculpture.instance, gui.GuiID, world, 0, 0, 0);
+	}
+
     public static void openGui(EntityPlayer player, World world, BlockPos pos, GuiType gui) {
     	player.openGui(MagicalSculpture.instance, gui.GuiID, world, pos.getX(), pos.getY(), pos.getZ());
     }

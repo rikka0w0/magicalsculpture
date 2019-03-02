@@ -1,9 +1,6 @@
 package magicalsculpture;
 
-import magicalsculpture.item.ItemAmplifier;
-import magicalsculpture.item.ItemChisel;
-import magicalsculpture.item.ItemRelic;
-import magicalsculpture.item.ItemReverser;
+import magicalsculpture.item.*;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class ItemRegistry {
@@ -11,12 +8,14 @@ public class ItemRegistry {
 	public static ItemReverser itemReverser;
 	public static ItemRelic itemRelic;
 	public static ItemAmplifier itemAmplifier;
+	public static ItemUserGuide itemUserGuide;
 	
 	public static void initItems() {
 		itemChisel = new ItemChisel();
 		itemReverser = new ItemReverser();
 		itemRelic = new ItemRelic();
 		itemAmplifier = new ItemAmplifier();
+		itemUserGuide = new ItemUserGuide();
 	}
 	
 	public static void registerItems(IForgeRegistry registry) {
@@ -24,7 +23,8 @@ public class ItemRegistry {
 				itemChisel,
 				itemReverser,
                 itemRelic,
-				itemAmplifier
+				itemAmplifier,
+				itemUserGuide
 				);
 	}
 }

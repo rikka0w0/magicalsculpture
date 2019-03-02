@@ -12,6 +12,7 @@ gui.magicalsculpture:relic=圣物放置槽
 gui.magicalsculpture:amplifier=增幅放置槽
 
 # Items
+item.magicalsculpture:userguide.name=魔法雕像使用说明书
 item.magicalsculpture:chisel.name=雕像凿
 item.magicalsculpture:reverser.name=轮回之粉
 item.magicalsculpture:reverser.comment=它会附着在圣物之上……并把它们同化成绿宝石！
