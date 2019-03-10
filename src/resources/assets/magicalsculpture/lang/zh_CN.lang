@@ -123,3 +123,45 @@ item.magicalsculpture:relic.48.name=黄金祝福
 item.magicalsculpture:relic.48.comment=一本来自河中的附魔书,可惜书页上的字已经无法辨识,故无法用于附魔
 item.magicalsculpture:relic.49.name=远古的智慧
 item.magicalsculpture:relic.49.comment=知识就是力量——和抗性、移动速度加快与伤害吸收
+
+# User Guide
+guide.magicalsculpture:content.title=目录
+guide.magicalsculpture:content.intro=欢迎使用&简介
+guide.magicalsculpture:content.structure=雕像构成
+guide.magicalsculpture:content.relics=寻找圣物
+guide.magicalsculpture:content.amplifier=增幅器
+guide.magicalsculpture:content.notes=后记
+
+guide.magicalsculpture:intro.text=看来你已经合成了一个雕像凿,恭喜你!现在你可以通过制作放入圣物后具有光环效果的雕像了。使用钻石、石头和箱子来制作雕像石和底座。去周游世界、手工合成、击杀怪物以及各种方式来获得圣物。具体的内容请继续阅读~
+
+guide.magicalsculpture:structure.text1=制作2x2x4个雕像石来构筑雕像本体
+guide.magicalsculpture:structure.text2=制作2x2x1个雕像底座来构筑雕像的底座
+guide.magicalsculpture:structure.text3=如图所示,雕像为多方块结构。将对应方块如图摆放。摆放完毕后使用雕像凿轻敲一下即可完成！
+guide.magicalsculpture:structure.text4=雕像会为一定范围内的玩家提供BUFF,BUFF的种类取决于被放置其中的圣物。
+guide.magicalsculpture:structure.text5=右键雕像部分,通过在此处放置[圣物]来让雕像提供对应的效果
+guide.magicalsculpture:structure.text6=右键底座部分,通过在此处放置[增幅器]来提升雕像影响范围
+
+guide.magicalsculpture:relics.text1=探索世界、手工合成或是在河边垂钓来收集更多的[圣物]！以下列举了几种[圣物]:
+guide.magicalsculpture:relics.text2=以下列举了几种[圣物]
+guide.magicalsculpture:relics.text3=光环效果 防火Ⅰ
+guide.magicalsculpture:relics.text4=通过击杀烈焰人小几率掉落
+guide.magicalsculpture:relics.text5=光环效果 防火Ⅰ
+guide.magicalsculpture:relics.text6=使用蜘蛛眼以及末影珍珠合成
+guide.magicalsculpture:relics.text7=光环效果 伤害吸收Ⅰ
+guide.magicalsculpture:relics.text8=垂钓小几率获得
+guide.magicalsculpture:relics.text9=光环效果 抗性提升Ⅱ 挖掘疲劳Ⅱ
+guide.magicalsculpture:relics.text10=探索地牢获得
+guide.magicalsculpture:relics.text11=除此之外还有更多圣物等待着被发现。据目前的资料显示，至少有50余种。
+
+guide.magicalsculpture:amplifier.text1=雕像的范围太小了吗？通过合成并置入增幅器可以增加雕像的光环影响范围。
+guide.magicalsculpture:amplifier.text2=每个提供4格半径范围增加
+guide.magicalsculpture:amplifier.text3=每个提供8格半径范围增加
+guide.magicalsculpture:amplifier.text4=每个提供12格半径范围增加
+guide.magicalsculpture:amplifier.text5=每个提供16格半径范围增加
+
+guide.magicalsculpture:notes.text1=《魔法雕像》是由Yuri’sCat和Rikka0w0耗时48小时制作完成的模组。
+guide.magicalsculpture:notes.text2=由于事物繁忙、时间受限，有些特性暂时没有被添加至模组内。至此，除了BUG维护和一些小问题之外，《魔法雕像》的制作算是画上了句号。
+guide.magicalsculpture:notes.text3=如果可能，未来将会添加更多的功能：新的状态效果、更多雕像、更多实用的魔法设备……当然那是在《魔法雕像2》里了。——我是说，如果有机会实现的话。
+guide.magicalsculpture:notes.text4=再次感谢六花Rikka0w0在百忙之中抽出时间来完成了这个模组。
+guide.magicalsculpture:notes.text5=同时也感谢您的使用！
+guide.magicalsculpture:notes.text6=——YurisCat
