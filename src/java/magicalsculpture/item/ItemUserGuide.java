@@ -1,7 +1,8 @@
 package magicalsculpture.item;
 
 import magicalsculpture.CreativeTab;
-import magicalsculpture.GuiHandler;
+import magicalsculpture.client.GuiUserGuide;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -26,7 +27,7 @@ public class ItemUserGuide extends ItemBase implements ISimpleTexture {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        GuiHandler.openGui(playerIn, worldIn, GuiHandler.GuiType.UserGuideGUI);
+        Minecraft.getMinecraft().displayGuiScreen(new GuiUserGuide());
         return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 }

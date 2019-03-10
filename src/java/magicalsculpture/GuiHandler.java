@@ -1,6 +1,5 @@
 package magicalsculpture;
 
-import magicalsculpture.item.ContainerUserGuide;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -21,7 +20,7 @@ public class GuiHandler extends AutoGuiHandler{
 		GuiType(int GuiID){
 			this.GuiID = GuiID;
 		}
-		
+
 		public static GuiType parse(int i) {
 			i -= 7;
 			if (i>= GuiType.values().length)
@@ -32,7 +31,7 @@ public class GuiHandler extends AutoGuiHandler{
 	
 	@Override
 	protected Container getContainer(int ID, EntityPlayer player, World world, BlockPos pos) {
-		return GuiType.parse(ID) == GuiType.UserGuideGUI ? new ContainerUserGuide(player) : null;
+		return null;
 	}
 	
 	@Override
