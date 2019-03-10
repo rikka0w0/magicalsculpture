@@ -1,5 +1,6 @@
 package magicalsculpture;
 
+import magicalsculpture.client.GuiUserGuide;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -37,7 +38,7 @@ public class GuiHandler extends AutoGuiHandler{
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected GuiScreen getGui(int ID, EntityPlayer player, World world, BlockPos pos) {
-		return null;
+		return ID == GuiType.UserGuideGUI.GuiID ? new GuiUserGuide() : null;
 	}
 
 	public static void openGui(EntityPlayer player, World world, GuiType gui) {
