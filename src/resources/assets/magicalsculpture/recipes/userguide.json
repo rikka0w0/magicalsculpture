@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+
+  "ingredients": [
+    {
+      "item": "magicalsculpture:chisel"
+    }
+  ],
+
+  "result": {
+    "item": "magicalsculpture:userguide"
+  }
+}
