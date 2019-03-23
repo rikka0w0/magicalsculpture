@@ -25,7 +25,7 @@ public class GuiRelic extends GuiContainer {
         //draw text and stuff here
         //the parameters for drawString are: string, x, y, color
 
-        String s = I18n.translateToLocal("gui.magicalsculpture:amplifier");
+        String s = I18n.translateToLocal("gui.magicalsculpture:relic");
         this.fontRenderer.drawString(s
                 , this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
     }

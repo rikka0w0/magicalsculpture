@@ -116,7 +116,7 @@ public class GuiUserGuide extends GuiScreen {
                         parent.drawItemStack(new ItemStack(Blocks.STONE), i+1+18, 64+1+36, "");
                         parent.drawItemStack(new ItemStack(Blocks.STONE), i+1+36, 64+1+36, "");
 
-                        parent.drawItemStack(new ItemStack(BlockRegistry.blockSculpture, 1, 1), i+1+95, 64+1+18, "");
+                        parent.drawItemStack(new ItemStack(BlockRegistry.blockSculpture, 1, 1), i+1+95, 64+1+18, "4");
 
                         i = (parent.width - 100) / 2;
                         parent.fontRenderer.drawSplitString(l("structure.text1"), i,128,100, 0);
@@ -142,7 +142,7 @@ public class GuiUserGuide extends GuiScreen {
                         parent.drawItemStack(new ItemStack(Blocks.STONE), i+1+18, 64+1+36, "");
                         parent.drawItemStack(new ItemStack(Blocks.STONE), i+1+36, 64+1+36, "");
 
-                        parent.drawItemStack(new ItemStack(BlockRegistry.blockSculpture), i+1+95, 64+1+18, "");
+                        parent.drawItemStack(new ItemStack(BlockRegistry.blockSculpture), i+1+95, 64+1+18, "4");
 
                         i = (parent.width - 100) / 2;
                         parent.fontRenderer.drawSplitString(l("structure.text2"), i,128,100, 0);
