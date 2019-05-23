@@ -110,7 +110,7 @@ item.magicalsculpture:relic.41.comment=The glorious Lord minted the coins himsel
 item.magicalsculpture:relic.42.name=Vegetarian fish
 item.magicalsculpture:relic.42.comment=Fish made from grass may be preferred by vegetarian cats.
 item.magicalsculpture:relic.43.name=Unlucky fish
-item.magicalsculpture:relic.43.comment=It is estimated that the fish was caught because of too much effort, the lucky value of this fish must be only E.
+item.magicalsculpture:relic.43.comment=Lucky E (Very unlucky).
 item.magicalsculpture:relic.44.name=Diver fish
 item.magicalsculpture:relic.44.comment=Pardon? What is it?
 item.magicalsculpture:relic.45.name=Blessing of Power
@@ -123,3 +123,47 @@ item.magicalsculpture:relic.48.name=Blessing of aurum
 item.magicalsculpture:relic.48.comment=A book of enchantment from the river, unfortunately, the words on the pages of the book can not be recognized, so it can not be used for enchantment.
 item.magicalsculpture:relic.49.name=Ancient wisdom
 item.magicalsculpture:relic.49.comment=Knowledge is power - resistance, speed of movement and absorption of injury.
+
+
+# User Guide
+guide.magicalsculpture:content.title=Contents
+guide.magicalsculpture:content.intro=Welcome & Intro
+guide.magicalsculpture:content.structure=Build Statues
+guide.magicalsculpture:content.relics=Get Relics
+guide.magicalsculpture:content.amplifier=Amplifier
+guide.magicalsculpture:content.notes=Epilogue
+
+guide.magicalsculpture:intro.text1=Looks like you just made a statuary chisel. Congratulations, now you can start building statues! Relics inside a statue add BUFF effect to nearby players. Use diamonds, stones and chests to craft statuary stone and base.
+guide.magicalsculpture:intro.text2=Relics can be obtained by crafting, exploring dungeons or killing monsters. Following chapters will explain the concept in detail.
+
+guide.magicalsculpture:structure.text1=Body: 2x2x4 (Total: 16) of statuary stone.
+guide.magicalsculpture:structure.text2=Base: 2x2x1 (Total: 4) of statuary base.
+guide.magicalsculpture:structure.text3=The sculpture is a multi-block structure. Place blocks as shown in the figure then right-click it with the sculpture chisel.
+guide.magicalsculpture:structure.text4=The statue will provide BUFF for players in a certain range. The type of BUFF depends on the relics placed in it.
+guide.magicalsculpture:structure.text5=Right-click on the statue body and place relics to enable the BUFF effect.
+guide.magicalsculpture:structure.text6=Right-click on the statue base and insert amplifiers to increase the range.
+
+guide.magicalsculpture:relics.text1=Explore the world, synthesize by hand or fish by the river to collect more relics!
+guide.magicalsculpture:relics.text2=Here are a few kinds of relics.
+guide.magicalsculpture:relics.text3=Fire ResistanceⅠ
+guide.magicalsculpture:relics.text4=From killing blazes (by chance).
+guide.magicalsculpture:relics.text5=Night VisionⅠ
+guide.magicalsculpture:relics.text6=Crafted with spider eye and ender pearl.
+guide.magicalsculpture:relics.text7=AbsorptionⅠ
+guide.magicalsculpture:relics.text8=From fishing (by chance)
+guide.magicalsculpture:relics.text9=ResistanceⅡ & Mining FatigueⅡ
+guide.magicalsculpture:relics.text10=Obtained from dungeons
+guide.magicalsculpture:relics.text11=In addition, there are more relics yet to be discovered. Accoring to rumors, there are at least 50 kinds of relics.
+
+guide.magicalsculpture:amplifier.text1=Concern about the BUFF range? By crafting and placing amplifiers, the range can be extended!
+guide.magicalsculpture:amplifier.text2=Increase the radius by 4 blocks
+guide.magicalsculpture:amplifier.text3=Increase the radius by 8 blocks
+guide.magicalsculpture:amplifier.text4=Increase the radius by 12 blocks
+guide.magicalsculpture:amplifier.text5=Increase the radius by 16 blocks
+
+guide.magicalsculpture:notes.text1=The Magic Sculpture is a MOD made by Yuri's Cat and Rikka0w0. It only took 48 hours to make this mod.
+guide.magicalsculpture:notes.text2=Since we don't have much spare time, some features have not been implemented, so recently, "Magic Sculpture" is not going to add new features, however we will continue the maintenance.
+guide.magicalsculpture:notes.text3=More features will be added in the future: new BUFFs, more sculpture, more magic devices... Of course, it will be in the "Magic Sculpture 2". —— I mean, if possible.
+guide.magicalsculpture:notes.text4=Thanks again to Rikka0w0 for his programming efforts in his spare time.
+guide.magicalsculpture:notes.text5=Thank you for playing！
+guide.magicalsculpture:notes.text6=——YurisCat

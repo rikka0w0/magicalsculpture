@@ -90,7 +90,17 @@ public class GuiUserGuide extends GuiScreen {
                     @Override
                     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
                         int i = (parent.width - 100) / 2;
-                        parent.fontRenderer.drawSplitString(l("intro.text"), i,80,100, 0);
+                        parent.fontRenderer.drawSplitString(l("intro.text1"), i,80,100, 0);
+
+                        i = (parent.width - 16) / 2;
+                        parent.drawItemStack(new ItemStack(ItemRegistry.itemChisel), i, 60, "");
+                    }
+                },
+                new Page(this, l("content.intro")) {
+                    @Override
+                    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+                        int i = (parent.width - 100) / 2;
+                        parent.fontRenderer.drawSplitString(l("intro.text2"), i,80,100, 0);
 
                         i = (parent.width - 16) / 2;
                         parent.drawItemStack(new ItemStack(ItemRegistry.itemChisel), i, 60, "");
@@ -212,15 +222,13 @@ public class GuiUserGuide extends GuiScreen {
 
                         ItemStack stack = new ItemStack(ItemRegistry.itemRelic,1,14);
                         parent.drawItemStack(stack, i+1, 74+1, "");
-                        parent.fontRenderer.drawSplitString(stack.getDisplayName(), i+20,78,80, 0);
-                        parent.fontRenderer.drawSplitString(l("relics.text3") + "\n" + l("relics.text4"), i+20,87,80, 0);
-                        parent.fontRenderer.drawSplitString("", i+20,96,80, 0);
+                        parent.fontRenderer.drawSplitString(stack.getDisplayName() + "\n" +
+                                l("relics.text3") + "\n" + l("relics.text4"), i+20,78,80, 0);
 
                         stack = new ItemStack(ItemRegistry.itemRelic,1,4);
                         parent.drawItemStack(stack, i+1, 128+1, "");
-                        parent.fontRenderer.drawSplitString(stack.getDisplayName(), i+20,132,80, 0);
-                        parent.fontRenderer.drawSplitString(l("relics.text5") + "\n" + l("relics.text6"), i+20,141,80, 0);
-                        parent.fontRenderer.drawSplitString("", i+20,150,80, 0);
+                        parent.fontRenderer.drawSplitString(stack.getDisplayName() + "\n" +
+                                l("relics.text5") + "\n" + l("relics.text6"), i+20,132,80, 0);
                     }
                 },
 
@@ -231,13 +239,13 @@ public class GuiUserGuide extends GuiScreen {
 
                         ItemStack stack = new ItemStack(ItemRegistry.itemRelic,1,48);
                         parent.drawItemStack(stack, i+1, 74+1, "");
-                        parent.fontRenderer.drawSplitString(stack.getDisplayName(), i+20,78,80, 0);
-                        parent.fontRenderer.drawSplitString(l("relics.text7") + "\n" + l("relics.text8"), i+20,87,80, 0);
+                        parent.fontRenderer.drawSplitString(stack.getDisplayName() + "\n" +
+                                l("relics.text7") + "\n" + l("relics.text8"), i+20,78,80, 0);
 
                         stack = new ItemStack(ItemRegistry.itemRelic,1,18);
                         parent.drawItemStack(stack, i+1, 128+1, "");
-                        parent.fontRenderer.drawSplitString(stack.getDisplayName(), i+20,132,80, 0);
-                        parent.fontRenderer.drawSplitString(l("relics.text9") + "\n" + l("relics.text10"), i+20,141,80, 0);
+                        parent.fontRenderer.drawSplitString(stack.getDisplayName() + "\n" +
+                                l("relics.text9") + "\n" + l("relics.text10"), i+20,132,80, 0);
                     }
                 },
 
@@ -305,7 +313,7 @@ public class GuiUserGuide extends GuiScreen {
                     @Override
                     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
                         int i = (parent.width - 100) / 2 - 4;
-                        parent.fontRenderer.drawSplitString(l("notes.text2")+"\n\n"+l("notes.text3"), i,58,100, 0);
+                        parent.fontRenderer.drawSplitString(l("notes.text3")+"\n\n"+l("notes.text4"), i,58,100, 0);
                     }
                 },
 
@@ -329,13 +337,15 @@ public class GuiUserGuide extends GuiScreen {
         int i = (this.width - 192) / 2;
         this.drawTexturedModalRect(i, 32, 0, 0, 192, 192);
 
+        boolean unicodeFlag = this.fontRenderer.getUnicodeFlag();
+        this.fontRenderer.setUnicodeFlag(true);
         this.pages[this.page].drawScreen(mouseX, mouseY, partialTicks);
         drawCenterString(this.pages[this.page].title, 36, 44, 0);
         drawCenterString((this.page+1) + "/" + this.pages.length, 46, 188, 0);
-
         // drawItemStack(new ItemStack(ItemRegistry.itemUserGuide), (this.width - 192) / 2 + 38, 44, "");
 
         super.drawScreen(mouseX, mouseY, partialTicks);
+        this.fontRenderer.setUnicodeFlag(unicodeFlag);
     }
 
     @Override

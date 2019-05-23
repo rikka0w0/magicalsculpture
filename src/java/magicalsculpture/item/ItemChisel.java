@@ -24,7 +24,7 @@ public class ItemChisel extends ItemBase implements ISimpleTexture {
         super("chisel", false);
         setCreativeTab(CreativeTab.instance);
         setMaxStackSize(1);
-        setMaxDamage(5);
+        setMaxDamage(0);
     }
 
     @Override

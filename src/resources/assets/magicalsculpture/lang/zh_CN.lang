@@ -132,7 +132,8 @@ guide.magicalsculpture:content.relics=寻找圣物
 guide.magicalsculpture:content.amplifier=增幅器
 guide.magicalsculpture:content.notes=后记
 
-guide.magicalsculpture:intro.text=看来你已经合成了一个雕像凿,恭喜你!现在你可以通过制作放入圣物后具有光环效果的雕像了。使用钻石、石头和箱子来制作雕像石和底座。去周游世界、手工合成、击杀怪物以及各种方式来获得圣物。具体的内容请继续阅读~
+guide.magicalsculpture:intro.text1=看来你已经合成了一个雕像凿,恭喜你!现在你可以通过制作放入圣物后具有光环效果的雕像了。使用钻石、石头和箱子来制作雕像石和底座。
+guide.magicalsculpture:intro.text2=周游世界、手工合成、击杀怪物以及各种方式来获得圣物。具体的内容请继续阅读~
 
 guide.magicalsculpture:structure.text1=制作2x2x4个雕像石来构筑雕像本体
 guide.magicalsculpture:structure.text2=制作2x2x1个雕像底座来构筑雕像的底座
