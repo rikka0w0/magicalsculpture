@@ -56,11 +56,11 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
     }
 
     public static class Render extends TileEntitySculpture implements ITickable{
-        private EnumFacing renderfacing;
+        private EnumFacing renderfacing = EnumFacing.NORTH;
 
         public void setRenderFacing(EnumFacing facing) {
             this.renderfacing = facing;
-            markForRenderUpdate();
+            markTileEntityForS2CSync();
         }
 
         public EnumFacing getRenderFacing() {
