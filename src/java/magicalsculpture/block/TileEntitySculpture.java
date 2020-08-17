@@ -2,8 +2,8 @@ package magicalsculpture.block;
 
 import magicalsculpture.ItemRegistry;
 import magicalsculpture.item.ItemAmplifier;
+import magicalsculpture.item.ItemRelic;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,13 +23,15 @@ import rikka.librikka.multiblock.IMultiBlockTile;
 import rikka.librikka.multiblock.MultiBlockTileInfo;
 import rikka.librikka.tileentity.IGuiProviderTile;
 import rikka.librikka.tileentity.TileEntityBase;
-import scala.Int;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public abstract class TileEntitySculpture extends TileEntityBase implements IMultiBlockTile, IGuiProviderTile {
-    public static class PlaceHolderStone extends TileEntitySculpture{
+    protected int scanPeriod() {
+    	return 20;	// Scan for players every second
+    }
+
+	public static class PlaceHolderStone extends TileEntitySculpture{
         @Override
         public Container getContainer(EntityPlayer entityPlayer, EnumFacing enumFacing) {
             BlockPos hostPos = getRenderPos();
@@ -153,12 +155,20 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
         ///////////////////////////////////
         /// ITickable
         ///////////////////////////////////
+        private int lastScanTick = 0;
+
         @Override
         public void update() {
             if (world.isRemote) {
                 //Update client rendering
                 return;
             }
+
+            if (lastScanTick < scanPeriod()) {
+            	lastScanTick ++;
+            	return;
+            }
+            lastScanTick = 0;
 
             if (inventoryRelic.isEmpty())
                 return;
@@ -167,7 +177,7 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
             for (int i=0; i<inventoryAmplifier.getSizeInventory(); i++) {
                 ItemStack stack = inventoryAmplifier.getStackInSlot(i);
                 if (!stack.isEmpty() && stack.getItem() == ItemRegistry.itemAmplifier && stack.getItemDamage() < 4) {
-                    range += ItemRegistry.itemAmplifier.amplifierVal[stack.getItemDamage()];
+                    range += ItemAmplifier.amplifierVal[stack.getItemDamage()];
                 }
             }
 
@@ -177,7 +187,7 @@ public abstract class TileEntitySculpture extends TileEntityBase implements IMul
                 return;
 
             ItemStack itemRelic = inventoryRelic.getStackInSlot(0);
-            Object[] objects = ItemRegistry.itemRelic.relicEffect[itemRelic.getItemDamage()];
+            Object[] objects = ItemRelic.relicEffect[itemRelic.getItemDamage()];
             PotionEffect[] effects = new PotionEffect[objects.length / 2];
             for (int i=0; i<effects.length; i++) {
                 effects[i] = new PotionEffect((Potion)objects[2*i], 100, (Integer)objects[2*i+1]);
